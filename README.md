@@ -29,5 +29,5 @@ This is the repository for the DHIL newsletters. It has two directories:
 
 ### Sending the email
 
-1. To send the email, you can simply copy and paste the *rendered content from the browser* into an email client. Outlook works well for this, since it's the most constrained. 
+1. To send the email, you can simply copy and paste the *rendered content from the browser* into an email client. Just do a ctrl+a (or ⌘+a on Mac) and then copy into your client; Gmail works well for this and Outlook seems to work alright, but you'll want to test across platforms to see which one works right for you. 
 1. Make sure to send the email to yourself and others in the DHIL group and test on a variety of email platforms to make sure everything looks relatively ok (there will be differences between them, but there's no way to really resolve that).
