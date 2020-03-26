@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+    <meta charset="utf-8"> <!-- utf-8 works for most cases -->
+    <meta name="viewport" content="width=device-width"> <!-- Forcing initial-scale shouldn't be necessary -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Use the latest (edge) version of IE rendering engine -->
+    <meta name="x-apple-disable-message-reformatting">  <!-- Disable auto-scale in iOS 10 Mail entirely -->
+    <meta name="format-detection" content="telephone=no,address=no,email=no,date=no,url=no"> <!-- Tell iOS not to automatically link certain text strings. -->
+    <title></title> <!-- The title tag shows in email notifications, like Android 4.4. -->
+
+    <!-- Web Font / @font-face : BEGIN -->
+    <!-- NOTE: If web fonts are not required, lines 10 - 27 can be safely removed. -->
+
+    <!-- Desktop Outlook chokes on web font references and defaults to Times New Roman, so we force a safe fallback font. -->
+    <!--[if mso]>
+        <style>
+            * {
+                font-family: sans-serif !important;
+            }
+        </style>
+    <![endif]-->
+
+    <!-- All other clients get the webfont reference; some will render the font and others will silently fail to the fallbacks. More on that here: http://stylecampaign.com/blog/2015/02/webfont-support-in-email/ -->
+    <!--[if !mso]><!-->
+    <!-- insert web font reference, eg: <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'> -->
+    <!--<![endif]-->
+
+    <!-- Web Font / @font-face : END -->
+
+    <!-- CSS Reset : BEGIN -->
+    <style>
+
+        @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap');
+
+        /* What it does: Remove spaces around the email design added by some email clients. */
+        /* Beware: It can remove the padding / margin and add a background color to the compose a reply window. */
+        html,
+        body {
+            margin: 0 auto !important;
+            padding: 0 !important;
+            height: 100% !important;
+            width: 100% !important;
+        }
+
+        /* What it does: Stops email clients resizing small text. */
+        * {
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        /* What it does: Centers email on Android 4.4 */
+        div[style*="margin: 16px 0"] {
+            margin: 0 !important;
+        }
+
+        /* What it does: forces Samsung Android mail clients to use the entire viewport */
+        #MessageViewBody, #MessageWebViewDiv{
+            width: 100% !important;
+        }
+
+        /* What it does: Stops Outlook from adding extra spacing to tables. */
+        table,
+        td {
+            mso-table-lspace: 0pt !important;
+            mso-table-rspace: 0pt !important;
+        }
+
+        /* What it does: Fixes webkit padding issue. */
+        table {
+            border-spacing: 0 !important;
+            border-collapse: collapse !important;
+            table-layout: fixed !important;
+            margin: 0 auto !important;
+        }
+
+        /* What it does: Uses a better rendering method when resizing images in IE. */
+        img {
+            -ms-interpolation-mode:bicubic;
+        }
+
+        /* What it does: Prevents Windows 10 Mail from underlining links despite inline CSS. Styles for underlined links should be inline. */
+        a {
+            text-decoration: none;
+        }
+
+        /* What it does: A work-around for email clients meddling in triggered links. */
+        a[x-apple-data-detectors],  /* iOS */
+        .unstyle-auto-detected-links a,
+        .aBn {
+            border-bottom: 0 !important;
+            cursor: default !important;
+            color: inherit !important;
+            text-decoration: none !important;
+            font-size: inherit !important;
+            font-family: inherit !important;
+            font-weight: inherit !important;
+            line-height: inherit !important;
+        }
+
+        /* What it does: Prevents Gmail from displaying a download button on large, non-linked images. */
+        .a6S {
+            display: none !important;
+            opacity: 0.01 !important;
+        }
+
+        /* What it does: Prevents Gmail from changing the text color in conversation threads. */
+        .im {
+            color: inherit !important;
+        }
+
+        /* If the above doesn't work, add a .g-img class to any image in question. */
+        img.g-img + div {
+            display: none !important;
+        }
+
+
+        h1{
+            font-size: 25.00px;
+        }
+
+        h2 {
+            font-size: 20px;
+        }
+
+        /* What it does: Removes right gutter in Gmail iOS app: https://github.com/TedGoas/Cerberus/issues/89  */
+        /* Create one of these media queries for each additional viewport size you'd like to fix */
+
+        /* iPhone 4, 4S, 5, 5S, 5C, and 5SE */
+        @media only screen and (min-device-width: 320px) and (max-device-width: 374px) {
+            u ~ div .email-container {
+                min-width: 320px !important;
+            }
+        }
+        /* iPhone 6, 6S, 7, 8, and X */
+        @media only screen and (min-device-width: 375px) and (max-device-width: 413px) {
+            u ~ div .email-container {
+                min-width: 375px !important;
+            }
+        }
+        /* iPhone 6+, 7+, and 8+ */
+        @media only screen and (min-device-width: 414px) {
+            u ~ div .email-container {
+                min-width: 414px !important;
+            }
+        }
+
+    </style>
+
+    <!-- What it does: Makes background images in 72ppi Outlook render at correct size. -->
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:AllowPNG/>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+    </xml>
+    <![endif]-->
+
+    <!-- CSS Reset : END -->
+
+    <!-- Progressive Enhancements : BEGIN -->
+    <style>
+
+	    /* What it does: Hover styles for buttons */
+	    .button-td,
+	    .button-a {
+	        transition: all 100ms ease-in;
+	    }
+	    .button-td-primary:hover,
+	    .button-a-primary:hover {
+	        background: #555555 !important;
+	        border-color: #555555 !important;
+	    }
+
+	    /* Media Queries */
+	    @media screen and (max-width: 600px) {
+
+	        /* What it does: Adjust typography on small screens to improve readability */
+	        .email-container p {
+	            font-size: 16px !important;
+	        }
+
+	    }
+
+    </style>
+    <!-- Progressive Enhancements : END -->
+
+</head>
+<!--
+	The email background color (#222222) is defined in three places:
+	1. body tag: for most email clients
+	2. center tag: for Gmail and Inbox mobile apps and web versions of Gmail, GSuite, Inbox, Yahoo, AOL, Libero, Comcast, freenet, Mail.ru, Orange.fr
+	3. mso conditional: For Windows 10 Mail
+-->
+<body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: #FFFEFE; font-family: 'Open Sans', sans-serif;">
+	<center style="width: 100%; background-color: #FFFFFF;">
+    <!--[if mso | IE]>
+    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #CCCCCC;">
+    <tr>
+    <td>
+    <![endif]-->
+
+        <!-- Visually Hidden Preheader Text : BEGIN -->
+        <div style="display: none; font-size: 1px; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: 'Open Sans', sans-serif;">
+            Digital Humanities Innovation Lab Newsletter
+        </div>
+        <!-- Visually Hidden Preheader Text : END -->
+
+        <!-- Create white space after the desired preview text so email clients don’t pull other distracting text into the inbox preview. Extend as necessary. -->
+	    
+	    
+        <!-- Preview Text Spacing Hack : BEGIN -->
+        <div style="display: none; font-size: 1px; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: 'Open Sans', sans-serif;">
+	        &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
+        </div>
+        <!-- Preview Text Spacing Hack : END -->
+
+        <!--
+            Set the email width. Defined in two places:
+            1. max-width for all clients except Desktop Windows Outlook, allowing the email to squish on narrow but never go wider than 600px.
+            2. MSO tags for Desktop Windows Outlook enforce a 600px width.
+        -->
+        <div style="max-width: 600px; margin: 0 auto;" class="email-container">
+            <!--[if mso]>
+            <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="600">
+            <tr>
+            <td>
+            <![endif]-->
+
+
+            <!-- ******************************************************
+                 *                 EMAIL BODY:BEGIN                   *
+                 ******************************************************-->
+            
+	        <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto; max-width:600px;">
+
+	            
+	            
+	            
+	     <!-- ******************************************************
+                 *                 EMAIL HEADER: BEGIN                *
+                 ******************************************************-->  
+	            
+	            <tr>
+                    <td style="background-color: #ffffff; width:100%; max-width:100%;">
+                        <img src="https://www.lib.sfu.ca/system/files/taxonomies/Context/1328/dhilbanner.jpg" width="600" height="" alt="alt_text" border="0" style="background: #FFFFFF;; font-family: sans-serif; font-size: 15px; line-height: 15px; color: #FFFFFF; width:100%; max-width:600px; margin: auto; display:block;" class="g-img">
+                            
+                            <!--CHANGE THE a/@href URL TO THE CURRENT EMAIL DATE-->
+                           <!-- <a href="https://sfu-dhil.github.io/newsletter/2020-02-12.html" style="color:#696464; display:block; margin-top:1rem; text-align:center; font-size:0.9rem;">Show in Browser</a>-->
+                    </td>
+                </tr>
+ 
+	     <!-- ******************************************************
+                 *                 EMAIL HEADER: END                  *
+                 ******************************************************--> 
+ 
+ 
+ 
+	     <!-- ******************************************************
+                 *                 EMAIL LEADING TEXT: BEGIN          *
+                 ******************************************************--> 
+ 
+        <tr>
+                    <td style="background-color: #FFFFFF; padding: 20px 20px; font-family: 'Open Sans', sans-serif; font-size: 15px; line-height: 24px; color: #555555;">
+
+                        <p style="margin: 0; font-family: 'Open Sans', sans-serif;">Dear colleagues,<br><br>
+ 
+                            The Digital Humanities Innovation Lab (DHIL) is pleased to share our spring 2020 update.  Please forward to relevant areas or to individuals who may be interested in DHIL happenings. The workshops have been advertised via the Research Commons communication channels and the full update has been circulated to the DHIL email list (past event participants and research project leads).<br><br>
+                             
+                            The workshops this semester are at Burnaby, but we would be happy to organize an encore at Vancouver or Surrey, if there is sufficient interest.<br><br>
+                             
+                            We’d also be very interested in hearing your ideas for future programming - either things you'd like to learn about, areas of your own expertise you'd like to present, or research projects that would be interesting to showcase.<br><br>
+                             
+                            All the best,<br>
+                            Alex Xanthoudakis<br>
+                            DHIL Fellow - Communications<br>
+                            
+                            </p>
+                    </td>
+                </tr>
+
+	     <!-- ******************************************************
+                 *                 EMAIL LEADING TEXT: END          *
+                 ******************************************************--> 
+
+
+
+              <!--*************** CLEAR SPACE: BEGIN *****************-->
+                <tr>
+                    <td aria-hidden="true" height="20" style="font-size: 0px; line-height: 0px;">
+                        &nbsp;
+                    </td>
+                </tr>
+	      <!--*************** CLEAR SPACE: END *********************-->
+	            
+	     <!-- ******************************************************
+                 *                 EMAIL SECTION 1: BEGIN             *
+                 ******************************************************-->
+	            
+                <tr>
+                    <td style="background-color: #FBFBFB;">
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td style="padding: 20px; font-family: 'Open Sans', sans-serif; font-size: 15px; line-height: 20px; color: #555555;">
+                                    <h1 style="line-height:40px;">Digital Humanities Innovation Lab - Spring 2020 Update</h1>
+                                    <p style="margin: 0; line-height:24px;">Though the deadline to enter our project priority list has passed (January 15th), we accept project proposals on an on-going basis. Project timelines are flexible, so please don’t hesitate to submit or ask us for further information or clarification! Information about proposing a project can be found <a href="https://www.lib.sfu.ca/help/publish/dh/dhil/work-dhil">here</a>.</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+	            
+	     <!-- ******************************************************
+                 *                 EMAIL SECTION 1: END               *
+                 ******************************************************-->
+	            
+	      <!--*************** CLEAR SPACE: BEGIN *****************-->
+                <tr>
+                    <td aria-hidden="true" height="10" 
+                        style="background-color:#FFFFFF; font-size: 0px; line-height: 0px;">
+                        &nbsp;
+                    </td>
+                </tr>      
+	      <!--*************** CLEAR SPACE: END *********************-->
+	            
+	            
+	     <!-- ******************************************************
+                 *                 EMAIL SECTION 2: BEGIN             *
+                 ******************************************************-->
+	            
+                <tr>
+                    <td style="background-color: #FBFBFB;">
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td style="padding: 20px; font-family: 'Open Sans', sans-serif; font-size: 15px; line-height: 20px; color: #555555;">
+                                    <h1 style="line-height:40px;">DHIL Events</h1>
+                                    <p style="line-height:24px;">This spring we are privileged to bring the SFU community a variety of opportunities to apply a critical lens to digital practices and build digital research skills using DH computational tools. Consider joining us at our two-part lecture and workshop event on value-sensitive design, featuring Dr. Gillian Russell, or one of our ongoing hands-on workshops. Details and registration links below.</p>
+                                    <h2 style="line-height:32px; padding:10px 0px 5px 0px; font-style:italic;">Speculative Interventions: Employing the imaginary in Value-Sensitive Design</h2>
+                                    <h3>A Conversation with Gillian Russell</h3>
+                                    <p style="margin: 0; line-height:24px;">This talk will address the potential for the imaginary as a design tool for social change. Designer and researcher Gillian Russell will introduce her recent work which explores the role of contemporary design practice in future imagining, future literacy and future ethics. Working at the intersection of design, anthropological futures, and narrative environments, her work uses a combination of speculative intervention and value-sensitive design to engage publics to question the authority of a specific reality in order to foreground its assumptions and ideologies – raising awareness that if reality is made, then it can be unmade and made anew.</p>
+                                    <h3>Workshop - Re-Imagining the Now</h3>
+                                    <p style="margin: 0; line-height:24px;">Technological artifacts embody and reflect value systems that are deeply embedded within our culture, values that are often unseen or unacknowledged. Whether we are conscious of it or not, these artifacts provide material answers to questions of how to live and act in the world. This workshop will introduce a series of core techniques and ideas from critical design to think through digital technology’s capacities and potentiality both as a corrective to its uncritical embrace and as a way to redefine the digital in daily life. Participants will use a set of custom-designed playing cards and playing mat to re-evaluate and re-invent the digital technologies around us. In the process, we will create a wide spectrum of technological imaginations in terms of indigenous, feminist and intersectional views of the world.</p>
+                                    
+                                    
+                                    
+                                </td>
+                            </tr>
+                            
+                            
+                        </table>
+                    </td>
+                </tr>
+	    <!-- ******************************************************
+                *                 EMAIL SECTION 2: END               *
+                ******************************************************-->
+	            
+	     <!--*************** CLEAR SPACE: BEGIN *****************-->
+                <tr>
+                    <td aria-hidden="true" height="10" 
+                        style="background-color:#FFFFFF; background-color:#FFFFFF; font-size: 0px; line-height: 0px;">
+                        &nbsp;
+                    </td>
+                </tr>
+	     <!--*************** CLEAR SPACE: END *******************-->       
+	     
+	     
+	    <!-- ******************************************************
+                *                 EMAIL SECTION 3: BEGIN             *
+                ******************************************************-->
+	            
+                <tr>
+                    <td style="background-color: #FBFBFB;">
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td style="padding: 20px; font-family: 'Open Sans', sans-serif; font-size: 15px; line-height: 20px; color: #555555;">
+                                    <h1 style="line-height:40px;">DH Workshops</h1>
+                                    
+                                    <h2 style="line-height:32px; padding:20px 0px 5px 0px; font-style:italic;">Introduction to APIs and Web Scraping: Ethical Considerations</h2>
+                                    <p style="margin: 0; line-height:24px;">Application Programming Interfaces (APIs) are parts of a website’s code made available to the public, which can be used to query data in controlled amounts. Web scraping is described as the act of pulling down (usually large) amounts of data from a website. Though both are increasingly used as tools in scholarship, the ethics regarding the use of either of these tools is hotly debated: How should we store data that contains potentially sensitive and/or identifying information? Should scholars be beholden to a business’s terms and conditions, even if that corporation is a multi-billion dollar company? APIs are legally sound, but what kinds of data should be scraped?</p>
+                                    <p style="margin-top: 16px; line-height:24px;">This tutorial will provide attendees with a basic understanding of APIs and web scraping, as well as the tumultuous history of using both in scholarship. Attendees will then be encouraged to participate in critical discussion surrounding the ethics of each for scholarly use.</p>
+                                    <p style="padding-left:20px; line-height:28px;">
+                                        February 13 - 1:00pm to 3:00pm, Bennett Library 7010<br>
+<b>Presented by</b>: Alex Xanthoudakis, DH Fellow; Hannah Holtzclaw, DH Fellow<br>
+<b>Register</b>: <a href="https://www.lib.sfu.ca/help/publish/dh/dhil/35080">https://www.lib.sfu.ca/help/publish/dh/dhil/35080</a>
+</p>
+
+ <h2 style="line-height:32px; padding:20px 0px 5px 0px; font-style:italic;">Introduction to Twitter bots using Tracery</h2>
+                                    <p style="margin: 0; line-height:24px;">Using the Tracery story-grammar generation tool, participants will learn how to turn simple JSON lists into full-fledged Twitter bots like @Gastwon, (https://twitter.com/gastwon) @TaySEliot (https://twitter.com/tayseliot) or even @SoftLandscapes. (https://twitter.com/softlandscapes). No programming experience is necessary.</p>
+                                    <p style="margin-top: 16px; line-height:24px;">Please bring a fully charged laptop.</p>
+                                    <p style="padding-left:20px; line-height:28px;">
+                                        March 5 - 1:00pm to 3:00pm, Bennett Library 7010<br>
+<b>Presented by</b>: Hannah Holtzclaw, DH Fellow; Alex Xanthoudakis, DH Fellow<br>
+<b>Register</b>: <a href="https://www.lib.sfu.ca/help/publish/dh/dhil/35070">https://www.lib.sfu.ca/help/publish/dh/dhil/35070</a>
+</p>
+
+                                    
+
+                                </td>
+                            </tr>
+                            
+                            
+                        </table>
+                    </td>
+                </tr>
+	            
+	    <!-- ******************************************************
+                *                 EMAIL SECTION 3: END               *
+                ******************************************************-->
+	            
+	     <!--*************** CLEAR SPACE: BEGIN *****************-->       
+                <tr>
+                    <td aria-hidden="true" height="10" style="background-color:#FFFFFF; background-color:#FFFFFF; font-size: 0px; line-height: 0px;">
+                        &nbsp;
+                    </td>
+                </tr>
+	     <!--*************** CLEAR SPACE: END *******************-->
+	            
+	            
+	    <!-- ******************************************************
+                *                 EMAIL SECTION 4: BEGIN             *
+                ******************************************************-->
+	            
+                <tr>
+                    <td style="background-color: #FBFBFB;">
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td style="padding: 20px; font-family: 'Open Sans', sans-serif; font-size: 15px; line-height: 20px; color: #555555;">
+                                    <h1 style="line-height:40px; padding-bottom:10px;">DHIL Staff<br></h1>
+                                    <p>We’ve welcomed two new hires! Though Digital Fellow Kim O’Donnell will be (and has been) dearly missed, we’re incredibly excited to welcome User Interface Developer <span style="font-weight:bold;">Joey Takeda</span> and Digital Fellow <span style="font-weight:bold;">Kenny Chakola</span> to our team: </p>
+                                    <h3>Joey Takeda</h3>
+                                    <p>Joey Takeda is the User Interface Developer for the DHIL. He has worked as a programmer for a number of DH projects, including <span style="font-style:italic;">The Map of Early Modern London</span>, <span style="font-style:italic;">Landscapes of Injustice</span>, <span style="font-style:italic;">Linked Early Modern Drama Online</span>, and <span style="font-style:italic;">The Winnifred Eaton Archive</span>. He is also in the final throes of an MA in English (Science and Technology Research Stream) from the University of British Columbia, where his research focuses on Indigenous and diasporic literature, textual and editorial approaches, queer theory, and ecocriticism.</p>
+                                    <h3>Kenny Chakola</h3>
+                                    <p>Kenny Chakola is Technical Fellow at DHIL. He is currently pursuing a Master's degree in Computer Science, specialised in Big Data at SFU. With experience in Data Analytics and Machine Learning, he likes to play with data and make meaningful insights from them.</p>
+                                </td>
+                            </tr>
+                            
+                            
+                        </table>
+                    </td>
+                </tr>
+	    <!-- ******************************************************
+                *                 EMAIL SECTION 4: END               *
+                ******************************************************-->
+            </table>
+            
+            <!-- ******************************************************
+                 *                 EMAIL BODY: END                    *
+                 ******************************************************-->
+
+
+            <!-- ******************************************************
+                 *                 EMAIL FOOTER: BEGIN                *
+                 ******************************************************-->
+            
+            <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;">
+                <tr>
+                    <td style="padding: 20px; font-family: 'Open Sans', sans-serif; font-size: 12px; line-height: 15px; text-align: center; color: #888888;">
+                        Digital Humanities Innovation Lab<br>
+                        <span class="unstyle-auto-detected-links">Simon Fraser University</span>
+                        <br><br>
+                    </td>
+                </tr>
+            </table>
+            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #1f5faf;">
+                <tr>
+                    <td>
+                        <div align="center" style="max-width: 600px; margin: auto;" class="email-container">
+                            <!--[if mso]>
+                            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="600" align="center">
+                            <tr>
+                            <td>
+                            <![endif]-->
+                            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                <tr>
+                                    <td style="padding: 20px; text-align: left; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #FBFBFB;">
+                                        <p style="margin: 0;">Simon Fraser University acknowledges the unceded Traditional Coast Salish Lands including the Tsleil-Waututh (səl̓ilw̓ətaʔɬ), Kwikwetlem (kʷikʷəƛ̓əm), Squamish (Sḵwx̱wú7mesh Úxwumixw) and Musqueam (xʷməθkʷəy̓əm) Nations.</p>
+                                    </td>
+                                </tr>
+                            </table>
+                            <!--[if mso]>
+                            </td>
+                            </tr>
+                            </table>
+                            <![endif]-->
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            
+            <!-- ******************************************************
+                 *                 EMAIL FOOTER: END                *
+                 ******************************************************-->
+
+            <!--[if mso]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </div>
+
+
+    <!--[if mso | IE]>
+    </td>
+    </tr>
+    </table>
+    <![endif]-->
+    </center>
+</body>
+</html>
